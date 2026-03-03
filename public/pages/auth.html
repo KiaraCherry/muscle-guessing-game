@@ -1,0 +1,65 @@
+<!-- ══════════════════════════════════════════════════════════════════
+     pages/auth.html
+     Auth screen — login, register, and guest access.
+     Loaded into #authScreen by js/router.js on boot.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<div class="auth-wrap">
+
+    <div class="auth-logo-block">
+        <div class="auth-logo">MUSCLE<em>LE</em></div>
+        <div class="auth-deco"></div>
+        <div class="auth-sub" id="authTagline"></div>
+    </div>
+
+    <div class="auth-card">
+        <div class="auth-tabs">
+            <div class="auth-tab active" id="tabLogin" onclick="authTab('login')"></div>
+            <div class="auth-tab" id="tabReg" onclick="authTab('register')"></div>
+        </div>
+
+        <!-- Sign In -->
+        <div id="fLogin">
+            <div class="fg">
+                <label id="lblLoginEmail"></label>
+                <input id="liEmail" type="email" autocomplete="email">
+            </div>
+            <div class="fg">
+                <label id="lblLoginPass"></label>
+                <input id="liPass" type="password" autocomplete="current-password">
+            </div>
+            <button class="auth-btn" onclick="doLogin()">
+                <span id="btnSignIn"></span>
+            </button>
+        </div>
+
+        <!-- Register -->
+        <div id="fReg" class="hidden">
+            <div class="fg">
+                <label id="lblRegName"></label>
+                <input id="rName" type="text" autocomplete="name">
+            </div>
+            <div class="fg">
+                <label id="lblRegEmail"></label>
+                <input id="rEmail" type="email" autocomplete="email">
+            </div>
+            <div class="fg">
+                <label id="lblRegPass"></label>
+                <input id="rPass" type="password" autocomplete="new-password">
+            </div>
+            <button class="auth-btn" onclick="doRegister()">
+                <span id="btnRegister"></span>
+            </button>
+        </div>
+
+        <div class="auth-err" id="authErr"></div>
+    </div>
+
+    <!-- Guest access -->
+    <div class="guest-divider">
+        <span id="guestDividerText"></span>
+    </div>
+    <button class="guest-btn" id="btnGuest" onclick="continueAsGuest()"></button>
+    <p class="guest-note" id="guestNote"></p>
+
+</div>

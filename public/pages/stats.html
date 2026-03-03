@@ -1,3 +1,11 @@
+<!-- ══════════════════════════════════════════════════════════════════
+     pages/stats.html
+     Stats page — headline numbers, guess distribution, muscle group
+     accuracy, leaderboard. Shows a guest prompt if not logged in.
+     Loaded into #statsPage by js/router.js when navigating to 'stats'.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- Guest prompt (shown instead of stats when not logged in) -->
 <div class="guest-stats-msg hidden" id="guestStatsMsg">
     <div class="gsm-emoji"><span class="material-symbols-rounded gsm-icon">bar_chart</span></div>
     <div class="gsm-heading" id="guestStatsMsgHead"></div>
@@ -7,6 +15,7 @@
     </button>
 </div>
 
+<!-- Stats content (hidden for guests) -->
 <div id="statsInner">
 
     <div class="section-head" id="statsSectionTitle"></div>
@@ -42,4 +51,4 @@
         <div id="lbBody"></div>
     </div>
 
-</div>
+</div><!-- /statsInner -->

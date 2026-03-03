@@ -1,3 +1,10 @@
+<!-- ══════════════════════════════════════════════════════════════════
+     pages/game.html
+     Game page — clue panel, guess grid, on-screen keyboard.
+     Loaded into #gamePage by js/router.js when navigating to 'game'.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- Mode / difficulty tags + back button -->
 <div class="game-toprow">
     <div class="game-tags">
         <span class="g-tag" id="gTagMode">Daily</span>
@@ -6,6 +13,7 @@
     <button class="back-btn" id="btnBack" onclick="exitGame()"></button>
 </div>
 
+<!-- Timed mode countdown bar -->
 <div class="timer-section" id="timerSection">
     <div class="timer-num" id="timerNum">60</div>
     <div class="timer-bar-bg">
@@ -13,6 +21,7 @@
     </div>
 </div>
 
+<!-- Anatomical clues panel -->
 <div class="clue-panel">
     <div class="clue-panel-head">
         <span class="clue-panel-title" id="cluesPanelTitle"></span>
@@ -24,8 +33,10 @@
     </div>
 </div>
 
+<!-- Region / group / type / letter-count chips -->
 <div class="info-row" id="infoRow"></div>
 
+<!-- Guess grid + status feedback -->
 <div class="guess-area">
     <div class="guess-grid" id="guessGrid"></div>
     <div class="hint-note" id="hintNote"></div>
@@ -36,4 +47,5 @@
     <div class="msg-bar" id="msgBar"></div>
 </div>
 
+<!-- On-screen keyboard -->
 <div class="keyboard" id="keyboard"></div>
