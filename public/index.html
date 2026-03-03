@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSCLELE - Physio Muscle Anatomy Game</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- Authentication Screen -->
+    <div id="authScreen"></div>
+
+    <!-- Main application -->
+    <div id="app">
+
+        <!-- Top bar — always visible once logged in, lives here not in a page -->
+        <div class="topbar">
+            <div class="topbar-logo" onclick="showPage('home')">MUSCLE<em>LE</em></div>
+            <div class="topbar-nav">
+                <button class="nav-btn active" id="nbHome" onclick="showPage('home')"></button>
+                <button class="nav-btn" id="nbStats" onclick="showPage('stats')"></button>
+                <div class="user-pill">
+                    <div class="avatar" id="uAvatar">?</div>
+                    <div class="user-name" id="uName"></div>
+                </div>
+                <button class="nav-btn" id="btnSignOut" onclick="doSignOut()"></button>
+            </div>
+        </div>
+
+        <!-- Page containers — inner HTML injected by router.js -->
+        <div class="page active" id="homePage"></div>
+        <div class="page" id="gamePage"></div>
+        <div class="page" id="statsPage"></div>
+
+    </div>
+
+    <!-- Difficulty -->
+    <div class="modal-bg" id="diffModal">
+        <div class="diff-modal">
+            <div class="diff-title" id="diffTitle"></div>
+            <div class="diff-sub" id="diffModalSub"></div>
+            <div class="diff-options">
+                <div class="diff-opt d-easy sel" onclick="pickDiff('easy')">
+                    <div>
+                        <div class="diff-opt-name" id="diffEasyName"></div>
+                        <div class="diff-opt-sub" id="diffEasySub"></div>
+                    </div>
+                    <div class="diff-radio"></div>
+                </div>
+                <div class="diff-opt d-med" onclick="pickDiff('medium')">
+                    <div>
+                        <div class="diff-opt-name" id="diffMedName"></div>
+                        <div class="diff-opt-sub" id="diffMedSub"></div>
+                    </div>
+                    <div class="diff-radio"></div>
+                </div>
+                <div class="diff-opt d-hard" onclick="pickDiff('hard')">
+                    <div>
+                        <div class="diff-opt-name" id="diffHardName"></div>
+                        <div class="diff-opt-sub" id="diffHardSub"></div>
+                    </div>
+                    <div class="diff-radio"></div>
+                </div>
+            </div>
+            <button class="diff-start" id="diffStartBtn" onclick="confirmStart()"></button>
+        </div>
+    </div>
+
+    <!-- Game result overlay -->
+    <div class="result-overlay" id="resultOverlay">
+        <div class="result-card">
+            <div class="r-emoji" id="rEmoji">💪</div>
+            <div class="r-heading" id="rHeading"></div>
+            <div class="r-muscle" id="rMuscle"></div>
+            <div class="r-fullname" id="rFullname"></div>
+            <div class="r-stats" id="rStats"></div>
+            <div class="r-fact" id="rFact"></div>
+            <div class="r-btns" id="rBtns"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="lang/en/en.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/stats.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<div class="home-hero">
+    <div class="hero-text">
+        <div class="hero-greeting" id="heroGreeting"></div>
+        <div class="hero-name" id="heroName">Student</div>
+        <div class="hero-date" id="heroDate"></div>
+    </div>
+    <div id="heroStreakBlock" class="hero-streak">
+        <div class="hero-streak-val" id="heroStreak">0</div>
+        <div class="hero-streak-lbl" id="heroStreakLbl"></div>
+    </div>
+</div>
+
+<div class="guest-banner hidden" id="guestBanner">
+    <span id="guestBannerText"></span>
+    <button class="guest-banner-btn" id="guestBannerBtn"></button>
+</div>
+
+<div class="section-head" id="chooseModeTitle"></div>
+
+<div class="mode-grid">
+
+    <div class="mode-card mode-daily" id="dailyCard" onclick="startMode('daily')">
+        <div class="mode-icon"><span class="material-symbols-rounded">calendar_today</span></div>
+        <div class="mode-title" id="dailyTitle"></div>
+        <div class="mode-desc" id="dailyDesc"></div>
+        <span class="mode-pill pill-navy" id="dailyPill"></span>
+    </div>
+
+    <div class="mode-card mode-practice" onclick="startMode('practice')">
+        <div class="mode-icon"><span class="material-symbols-rounded">science</span></div>
+        <div class="mode-title" id="practiceTitle"></div>
+        <div class="mode-desc" id="practiceDesc"></div>
+        <span class="mode-pill pill-teal" id="practicePill"></span>
+    </div>
+
+    <div class="mode-card mode-timed" onclick="startMode('timed')">
+        <div class="mode-icon"><span class="material-symbols-rounded">timer</span></div>
+        <div class="mode-title" id="timedTitle"></div>
+        <div class="mode-desc" id="timedDesc"></div>
+        <span class="mode-pill pill-sky" id="timedPill"></span>
+    </div>
+
+</div>
