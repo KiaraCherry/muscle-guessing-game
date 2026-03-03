@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSCLELE - Physio Muscle Anatomy Game</title>
+    <title>MUSCLELE — Physio Anatomy Game</title>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,16 +15,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet">
 
-
+    <!-- Styles -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-    <!-- Authentication Screen -->
+    <!-- Auth Screen -->
     <div id="authScreen"></div>
 
-    <!-- Main application -->
+    <!-- Main App -->
     <div id="app">
 
         <!-- Top bar — always visible once logged in, lives here not in a page -->
@@ -45,9 +46,60 @@
         <div class="page" id="gamePage"></div>
         <div class="page" id="statsPage"></div>
 
-    </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-inner">
 
-    <!-- Difficulty -->
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo">MUSCLE<em>LE</em></div>
+                    <p class="footer-tagline">An anatomy word game built for physiotherapy students. Test your muscle
+                        knowledge every day.</p>
+                    <span class="footer-version">v0.1.0 beta</span>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <div class="footer-col-title">Contact</div>
+                    <div class="footer-links">
+                        <a class="footer-link" href="mailto:your@email.com">
+                            <span class="material-symbols-rounded">mail</span>
+                            your@email.com
+                        </a>
+                        <a class="footer-link" href="https://github.com/yourusername" target="_blank" rel="noopener">
+                            <span class="material-symbols-rounded">code</span>
+                            github.com/yourusername
+                        </a>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="footer-col">
+                    <div class="footer-col-title">About</div>
+                    <div class="footer-links">
+                        <a class="footer-link" href="#" onclick="showAboutModal(); return false;">
+                            <span class="material-symbols-rounded">info</span>
+                            About Musclele
+                        </a>
+                        <a class="footer-link" href="#" onclick="showPrivacyModal(); return false;">
+                            <span class="material-symbols-rounded">shield</span>
+                            Privacy Policy
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2025 Your Name · Built for physio education</span>
+                <a class="footer-policy" href="#" onclick="showPrivacyModal(); return false;">Privacy Policy</a>
+            </div>
+        </footer>
+
+    </div><!-- /app -->
+
+    <!-- Difficulty Modal -->
     <div class="modal-bg" id="diffModal">
         <div class="diff-modal">
             <div class="diff-title" id="diffTitle"></div>
@@ -79,7 +131,7 @@
         </div>
     </div>
 
-    <!-- Game result overlay -->
+    <!-- Result Overlays -->
     <div class="result-overlay" id="resultOverlay">
         <div class="result-card">
             <div class="r-emoji" id="rEmoji">💪</div>
@@ -92,13 +144,23 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="./js/config.js"></script>
-    <script src="./lang/en/en.js"></script>
-    <script src="./js/router.js"></script>
-    <script src="./js/auth.js"></script>
-    <script src="./js/game.js"></script>
-    <script src="./js/stats.js"></script>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+     SCRIPTS
+     Order matters:
+       1. config.js   — API URL, difficulty config constants
+       2. en.js       — LANG strings + MUSCLES database
+       3. router.js   — page loading + showPage() + bootRouter()
+       4. auth.js     — login, register, guest, session
+       5. game.js     — gameplay logic
+       6. stats.js    — stats rendering
+     ══════════════════════════════════════════════════════════════════ -->
+    <script src="js/config.js"></script>
+    <script src="lang/en/en.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/stats.js"></script>
 
     <script>
         // Boot: load page fragments, populate static strings, then attempt
@@ -106,6 +168,87 @@
         // enterApp() which each call showPage() via router.js.
         bootRouter().then(() => tryAutoLogin());
     </script>
+
+    <!-- About Modal -->
+    <div class="modal-bg" id="aboutModal">
+        <div class="diff-modal" style="max-width:480px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <div class="diff-title">About Musclele</div>
+                <button onclick="closeModal('aboutModal')"
+                    style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted);">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <div
+                style="font-family:'Manrope',sans-serif;font-size:14px;color:var(--text2);line-height:1.7;display:flex;flex-direction:column;gap:12px;">
+                <p>Musclele is a <strong style="color:var(--navy)">Wordle-style anatomy game</strong> designed to help
+                    physiotherapy students learn and retain muscle knowledge in a fun, daily format.</p>
+                <p>Each round presents anatomical clues — function, origin, insertion, innervation, and clinical notes —
+                    progressively revealed with each wrong guess.</p>
+                <p>Built with Node.js, MongoDB, and vanilla JavaScript. Designed with physio students in mind.</p>
+                <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);">
+                    Made by <strong style="color:var(--navy)">Your Name</strong> · v0.1.0 beta
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal-bg" id="privacyModal">
+        <div class="diff-modal" style="max-width:480px;max-height:80vh;overflow-y:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <div class="diff-title">Privacy Policy</div>
+                <button onclick="closeModal('privacyModal')"
+                    style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted);">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <div
+                style="font-family:'Manrope',sans-serif;font-size:13px;color:var(--text2);line-height:1.75;display:flex;flex-direction:column;gap:14px;">
+                <p
+                    style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">
+                    Last updated: 2025</p>
+
+                <div>
+                    <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">What we collect</p>
+                    <p>When you create an account, we store your display name, email address, and a securely hashed
+                        version of your password. We also store your game statistics — streaks, win rates, guess
+                        distributions, and accuracy by muscle group.</p>
+                </div>
+                <div>
+                    <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">How we use it</p>
+                    <p>Your data is used solely to power the app — saving your progress, displaying your stats, and
+                        showing the leaderboard. We do not sell, share, or use your data for advertising.</p>
+                </div>
+                <div>
+                    <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Guest users</p>
+                    <p>If you play as a guest, no personal data is collected or stored. Game results are not saved.</p>
+                </div>
+                <div>
+                    <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Data storage</p>
+                    <p>Data is stored securely on MongoDB Atlas. Passwords are hashed using bcrypt and are never stored
+                        in plain text.</p>
+                </div>
+                <div>
+                    <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Contact</p>
+                    <p>For any privacy-related questions, contact us at <a href="mailto:your@email.com"
+                            style="color:var(--teal);">your@email.com</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showAboutModal() { document.getElementById('aboutModal').classList.add('open'); }
+        function showPrivacyModal() { document.getElementById('privacyModal').classList.add('open'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+        // Close on backdrop click
+        document.querySelectorAll('#aboutModal, #privacyModal').forEach(m => {
+            m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
+        });
+    </script>
+
 </body>
 
 </html>
