@@ -29,10 +29,10 @@
 
         <!-- Top bar — always visible once logged in, lives here not in a page -->
         <div class="topbar">
-            <div class="topbar-logo" onclick="showPage('home')">MUSCLE<em>LE</em></div>
+            <div class="topbar-logo" onclick="window.app.router.showPage('home')">MUSCLE<em>LE</em></div>
             <div class="topbar-nav">
-                <button class="nav-btn active" id="nbHome" onclick="showPage('home')"></button>
-                <button class="nav-btn" id="nbStats" onclick="showPage('stats')"></button>
+                <button class="nav-btn active" id="nbHome" onclick="window.app.router.showPage('home')"></button>
+                <button class="nav-btn" id="nbStats" onclick="window.app.router.showPage('stats')"></button>
                 <div class="user-pill">
                     <div class="avatar" id="uAvatar">?</div>
                     <div class="user-name" id="uName"></div>
@@ -54,7 +54,8 @@
                 <div class="footer-brand">
                     <div class="footer-logo">MUSCLE<em>LE</em></div>
                     <p class="footer-tagline">An anatomy word game built for physiotherapy students. Test your muscle
-                        knowledge every day.</p>
+                        knowledge
+                        every day.</p>
                     <span class="footer-version">v0.1.0 beta</span>
                 </div>
 
@@ -62,9 +63,10 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Contact</div>
                     <div class="footer-links">
-                        <a class="footer-link" href="mailto:your@email.com">
+                        <a class="footer-link" href="/cdn-cgi/l/email-protection#740d1b0106341119151d185a171b19">
                             <span class="material-symbols-rounded">mail</span>
-                            your@email.com
+                            <span class="__cf_email__"
+                                data-cfemail="bbc2d4cec9fbded6dad2d795d8d4d6">[email&#160;protected]</span>
                         </a>
                         <a class="footer-link" href="https://github.com/yourusername" target="_blank" rel="noopener">
                             <span class="material-symbols-rounded">code</span>
@@ -97,7 +99,17 @@
             </div>
         </footer>
 
-    </div><!-- /app -->
+    </div>
+
+    <!-- Region Filter Modal (practice mode) -->
+    <div class="modal-bg" id="regionModal">
+        <div class="diff-modal region-modal">
+            <div class="diff-title" id="regionModalTitle"></div>
+            <div class="diff-sub" id="regionModalSub"></div>
+            <div class="region-grid" id="regionGrid"></div>
+            <button class="diff-start" id="regionNextBtn" onclick="window.app.game._confirmRegion()"></button>
+        </div>
+    </div>
 
     <!-- Difficulty Modal -->
     <div class="modal-bg" id="diffModal">
@@ -105,21 +117,21 @@
             <div class="diff-title" id="diffTitle"></div>
             <div class="diff-sub" id="diffModalSub"></div>
             <div class="diff-options">
-                <div class="diff-opt d-easy sel" onclick="pickDiff('easy')">
+                <div class="diff-opt d-easy sel" onclick="window.app.game.pickDiff('easy')">
                     <div>
                         <div class="diff-opt-name" id="diffEasyName"></div>
                         <div class="diff-opt-sub" id="diffEasySub"></div>
                     </div>
                     <div class="diff-radio"></div>
                 </div>
-                <div class="diff-opt d-med" onclick="pickDiff('medium')">
+                <div class="diff-opt d-med" onclick="window.app.game.pickDiff('medium')">
                     <div>
                         <div class="diff-opt-name" id="diffMedName"></div>
                         <div class="diff-opt-sub" id="diffMedSub"></div>
                     </div>
                     <div class="diff-radio"></div>
                 </div>
-                <div class="diff-opt d-hard" onclick="pickDiff('hard')">
+                <div class="diff-opt d-hard" onclick="window.app.game.pickDiff('hard')">
                     <div>
                         <div class="diff-opt-name" id="diffHardName"></div>
                         <div class="diff-opt-sub" id="diffHardSub"></div>
@@ -127,7 +139,7 @@
                     <div class="diff-radio"></div>
                 </div>
             </div>
-            <button class="diff-start" id="diffStartBtn" onclick="confirmStart()"></button>
+            <button class="diff-start" id="diffStartBtn" onclick="window.app.game.confirmStart()"></button>
         </div>
     </div>
 
@@ -155,12 +167,14 @@
        5. game.js     — gameplay logic
        6. stats.js    — stats rendering
      ══════════════════════════════════════════════════════════════════ -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="js/config.js"></script>
     <script src="lang/en/en.js"></script>
     <script src="js/router.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/game.js"></script>
     <script src="js/stats.js"></script>
+    <script src="js/app.js"></script>
 
     <script>
         // Boot: load page fragments, populate static strings, then attempt
@@ -212,13 +226,16 @@
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">What we collect</p>
                     <p>When you create an account, we store your display name, email address, and a securely hashed
-                        version of your password. We also store your game statistics — streaks, win rates, guess
-                        distributions, and accuracy by muscle group.</p>
+                        version
+                        of your password. We also store your game statistics — streaks, win rates, guess distributions,
+                        and
+                        accuracy by muscle group.</p>
                 </div>
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">How we use it</p>
                     <p>Your data is used solely to power the app — saving your progress, displaying your stats, and
-                        showing the leaderboard. We do not sell, share, or use your data for advertising.</p>
+                        showing
+                        the leaderboard. We do not sell, share, or use your data for advertising.</p>
                 </div>
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Guest users</p>
@@ -227,12 +244,15 @@
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Data storage</p>
                     <p>Data is stored securely on MongoDB Atlas. Passwords are hashed using bcrypt and are never stored
-                        in plain text.</p>
+                        in
+                        plain text.</p>
                 </div>
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Contact</p>
-                    <p>For any privacy-related questions, contact us at <a href="mailto:your@email.com"
-                            style="color:var(--teal);">your@email.com</a>.</p>
+                    <p>For any privacy-related questions, contact us at <a
+                            href="/cdn-cgi/l/email-protection#b3cadcc6c1f3d6ded2dadf9dd0dcde"
+                            style="color:var(--teal);"><span class="__cf_email__"
+                                data-cfemail="fd8492888fbd98909c9491d39e9290">[email&#160;protected]</span></a>.</p>
                 </div>
             </div>
         </div>
