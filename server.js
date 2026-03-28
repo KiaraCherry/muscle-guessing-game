@@ -24,8 +24,8 @@ const PORT = process.env.PORT || 3000;
 
 // DATABASE CONNECTION
 mongoose.connect(MONGO_URI)
-    .then(() => console.log('MongoDB connected successfully'))
-    .catch(err => { console.error('MongoDB connection error:', err); process.exit(1); });
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => { console.error('MongoDB error:', err); process.exit(1); });
 
 // SCHEMAS
 
