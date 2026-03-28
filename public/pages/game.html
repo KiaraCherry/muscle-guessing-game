@@ -5,99 +5,99 @@
 
 <!-- Mode / difficulty tags + back button -->
 <div class="game-toprow">
-    <div class="game-tags">
-        <span class="g-tag" id="gTagMode">Daily</span>
-        <span class="g-tag" id="gTagDiff">Easy</span>
-    </div>
-    <button class="back-btn" id="btnBack" onclick="exitGame()"></button>
+  <div class="game-tags">
+    <span class="g-tag" id="gTagMode">Daily</span>
+    <span class="g-tag" id="gTagDiff">Easy</span>
+  </div>
+  <button class="back-btn" id="btnBack" onclick="window.app.game.exitGame()"></button>
 </div>
 
 <!-- Timed mode countdown bar -->
 <div class="timer-section" id="timerSection">
-    <div class="timer-num" id="timerNum">60</div>
-    <div class="timer-bar-bg">
-        <div class="timer-bar" id="timerBar"></div>
-    </div>
+  <div class="timer-num" id="timerNum">60</div>
+  <div class="timer-bar-bg">
+    <div class="timer-bar" id="timerBar"></div>
+  </div>
 </div>
 
 <!-- BODY DIAGRAM + CLUES side by side -->
 <div class="game-main">
 
-    <!-- Body diagram — always visible -->
-    <div class="body-diagram-wrap">
-        <div class="body-diagram-label" id="diagramLabel">Where is it?</div>
+  <!-- Body diagram — always visible -->
+  <div class="body-diagram-wrap">
+    <div class="body-diagram-label" id="diagramLabel">Where is it?</div>
 
-        <svg class="body-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+    <svg class="body-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
 
-            <!-- ── Silhouette paths ── -->
-            <!-- Head -->
-            <ellipse cx="50" cy="14" rx="9" ry="11" class="body-part" />
-            <!-- Neck -->
-            <rect x="46" y="24" width="8" height="6" rx="2" class="body-part" />
-            <!-- Torso -->
-            <path d="M32 30 Q28 32 27 50 L27 88 Q28 92 34 94 L34 100 L66 100 L66 94 Q72 92 73 88 L73 50 Q72 32 68 30 Z"
-                class="body-part" />
-            <!-- Left upper arm -->
-            <path d="M32 32 Q22 34 20 42 L19 62 Q20 66 24 66 L28 66 L30 44 Z" class="body-part" />
-            <!-- Left forearm -->
-            <path d="M19 63 Q18 74 19 82 Q20 86 23 86 L27 86 L27 65 Z" class="body-part" />
-            <!-- Right upper arm -->
-            <path d="M68 32 Q78 34 80 42 L81 62 Q80 66 76 66 L72 66 L70 44 Z" class="body-part" />
-            <!-- Right forearm -->
-            <path d="M81 63 Q82 74 81 82 Q80 86 77 86 L73 86 L73 65 Z" class="body-part" />
-            <!-- Left hand -->
-            <ellipse cx="21" cy="90" rx="4" ry="5" class="body-part" />
-            <!-- Right hand -->
-            <ellipse cx="79" cy="90" rx="4" ry="5" class="body-part" />
-            <!-- Left thigh -->
-            <path d="M34 100 L30 102 Q27 104 27 116 L28 132 Q29 138 34 139 L40 139 L42 100 Z" class="body-part" />
-            <!-- Right thigh -->
-            <path d="M66 100 L70 102 Q73 104 73 116 L72 132 Q71 138 66 139 L60 139 L58 100 Z" class="body-part" />
-            <!-- Left lower leg -->
-            <path d="M28 139 Q26 152 27 164 Q28 170 32 171 L38 171 L40 139 Z" class="body-part" />
-            <!-- Right lower leg -->
-            <path d="M72 139 Q74 152 73 164 Q72 170 68 171 L62 171 L60 139 Z" class="body-part" />
-            <!-- Left foot -->
-            <path d="M27 170 Q24 172 22 174 Q20 176 24 177 L38 177 L38 171 Z" class="body-part" />
-            <!-- Right foot -->
-            <path d="M73 170 Q76 172 78 174 Q80 176 76 177 L62 177 L62 171 Z" class="body-part" />
+      <!-- ── Silhouette paths ── -->
+      <!-- Head -->
+      <ellipse cx="50" cy="14" rx="9" ry="11" class="body-part" />
+      <!-- Neck -->
+      <rect x="46" y="24" width="8" height="6" rx="2" class="body-part" />
+      <!-- Torso -->
+      <path d="M32 30 Q28 32 27 50 L27 88 Q28 92 34 94 L34 100 L66 100 L66 94 Q72 92 73 88 L73 50 Q72 32 68 30 Z"
+        class="body-part" />
+      <!-- Left upper arm -->
+      <path d="M32 32 Q22 34 20 42 L19 62 Q20 66 24 66 L28 66 L30 44 Z" class="body-part" />
+      <!-- Left forearm -->
+      <path d="M19 63 Q18 74 19 82 Q20 86 23 86 L27 86 L27 65 Z" class="body-part" />
+      <!-- Right upper arm -->
+      <path d="M68 32 Q78 34 80 42 L81 62 Q80 66 76 66 L72 66 L70 44 Z" class="body-part" />
+      <!-- Right forearm -->
+      <path d="M81 63 Q82 74 81 82 Q80 86 77 86 L73 86 L73 65 Z" class="body-part" />
+      <!-- Left hand -->
+      <ellipse cx="21" cy="90" rx="4" ry="5" class="body-part" />
+      <!-- Right hand -->
+      <ellipse cx="79" cy="90" rx="4" ry="5" class="body-part" />
+      <!-- Left thigh -->
+      <path d="M34 100 L30 102 Q27 104 27 116 L28 132 Q29 138 34 139 L40 139 L42 100 Z" class="body-part" />
+      <!-- Right thigh -->
+      <path d="M66 100 L70 102 Q73 104 73 116 L72 132 Q71 138 66 139 L60 139 L58 100 Z" class="body-part" />
+      <!-- Left lower leg -->
+      <path d="M28 139 Q26 152 27 164 Q28 170 32 171 L38 171 L40 139 Z" class="body-part" />
+      <!-- Right lower leg -->
+      <path d="M72 139 Q74 152 73 164 Q72 170 68 171 L62 171 L60 139 Z" class="body-part" />
+      <!-- Left foot -->
+      <path d="M27 170 Q24 172 22 174 Q20 176 24 177 L38 177 L38 171 Z" class="body-part" />
+      <!-- Right foot -->
+      <path d="M73 170 Q76 172 78 174 Q80 176 76 177 L62 177 L62 171 Z" class="body-part" />
 
-            <!-- ── Glowing dot — position set by game.js ── -->
-            <g id="muscleDot" class="muscle-dot-group">
-                <!-- Outer pulse ring -->
-                <circle id="dotPulse" r="6" class="dot-pulse" />
-                <!-- Inner solid dot -->
-                <circle id="dotCore" r="3.5" class="dot-core" />
-                <!-- Region label -->
-                <text id="dotLabel" dy="-10" class="dot-label"></text>
-            </g>
+      <!-- ── Glowing dot — position set by game.js ── -->
+      <g id="muscleDot" class="muscle-dot-group">
+        <!-- Outer pulse ring -->
+        <circle id="dotPulse" r="6" class="dot-pulse" />
+        <!-- Inner solid dot -->
+        <circle id="dotCore" r="3.5" class="dot-core" />
+        <!-- Region label -->
+        <text id="dotLabel" dy="-10" class="dot-label"></text>
+      </g>
 
-        </svg>
+    </svg>
 
-        <div class="diagram-hint-note" id="diagramHintNote">
-            <span class="material-symbols-rounded">arrow_downward</span>
-            Wrong guesses unlock clues below
-        </div>
+    <div class="diagram-hint-note" id="diagramHintNote">
+      <span class="material-symbols-rounded">arrow_downward</span>
+      Wrong guesses unlock clues below
     </div>
+  </div>
 
-    <!-- Clue panel — clues appear here as guesses are used -->
-    <div class="clue-panel">
-        <div class="clue-panel-head">
-            <span class="clue-panel-title" id="cluesPanelTitle"></span>
-            <span class="clue-count-badge" id="clueCountBadge">0 / 5</span>
-        </div>
-        <div id="clueList">
-            <!-- Empty state shown before first wrong guess -->
-            <div class="clue-empty" id="clueEmpty">
-                <span class="material-symbols-rounded">lock</span>
-                <span>Clues unlock with each wrong guess</span>
-            </div>
-        </div>
-        <div class="clue-locked" id="clueLocked" style="display:none;">
-            <span class="material-symbols-rounded clue-lock-icon">lock</span>
-            <span id="clueLockedTxt"></span>
-        </div>
+  <!-- Clue panel — clues appear here as guesses are used -->
+  <div class="clue-panel">
+    <div class="clue-panel-head">
+      <span class="clue-panel-title" id="cluesPanelTitle"></span>
+      <span class="clue-count-badge" id="clueCountBadge">0 / 5</span>
     </div>
+    <div id="clueList">
+      <!-- Empty state shown before first wrong guess -->
+      <div class="clue-empty" id="clueEmpty">
+        <span class="material-symbols-rounded">lock</span>
+        <span>Clues unlock with each wrong guess</span>
+      </div>
+    </div>
+    <div class="clue-locked" id="clueLocked" style="display:none;">
+      <span class="material-symbols-rounded clue-lock-icon">lock</span>
+      <span id="clueLockedTxt"></span>
+    </div>
+  </div>
 
 </div><!-- /game-main -->
 
@@ -106,13 +106,13 @@
 
 <!-- Guess grid + status feedback -->
 <div class="guess-area">
-    <div class="guess-grid" id="guessGrid"></div>
-    <div class="hint-note" id="hintNote"></div>
-    <div class="guesses-left">
-        <span id="guessesLeftLabel"></span>
-        <span id="guessesLeftNum">—</span>
-    </div>
-    <div class="msg-bar" id="msgBar"></div>
+  <div class="guess-grid" id="guessGrid"></div>
+  <div class="hint-note" id="hintNote"></div>
+  <div class="guesses-left">
+    <span id="guessesLeftLabel"></span>
+    <span id="guessesLeftNum">—</span>
+  </div>
+  <div class="msg-bar" id="msgBar"></div>
 </div>
 
 <!-- On-screen keyboard -->
