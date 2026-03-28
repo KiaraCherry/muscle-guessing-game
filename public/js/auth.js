@@ -5,6 +5,7 @@
  */
 
 class Auth {
+
     constructor() {
         this.token = localStorage.getItem('musclele_token') || null;
         this.currentUser = null;
@@ -43,7 +44,7 @@ class Auth {
         const email = document.getElementById('rEmail').value.trim();
         const password = document.getElementById('rPass').value;
 
-        if (!displayName || !email || !password) return setAuthErr(LANG.auth.errFillAll);
+        if (!displayName || !email || !password) return this._setErr(LANG.auth.errFillAll);
 
         try {
             const data = await this.post('/api/register', { displayName, email, password });
@@ -66,9 +67,9 @@ class Auth {
             const data = await this.post('/api/login', { email, password });
             if (data.error) return this._setErr(data.error);
             this._storeSession(data.token, data.user);
-            enterApp();
+            this.enterApp();
         } catch {
-            setAuthErr(LANG.auth.errNoServer);
+            this._setErr(LANG.auth.errNoServer);
         }
     }
 
@@ -86,7 +87,7 @@ class Auth {
         this.currentUser = null;
         this.isGuest = false;
         localStorage.removeItem('musclele_token');
-        window.app.router.showAuth();   // router.js
+        window.app.router.showAuth();
     }
 
     /** Auto-Login */
@@ -113,7 +114,7 @@ class Auth {
         document.getElementById('authScreen').style.display = 'none';
         document.getElementById('app').style.display = 'flex';
         this.isGuest ? this._populateGuestShell() : this._populateUserShell();
-        window.app.router.showPage('home');   // router.js — loads pages/home.html if not yet loaded
+        window.app.router.showPage('home');
     }
 
     /** Shell: Logged-in User */
@@ -194,15 +195,10 @@ class Auth {
         });
     }
 
-    /**
-     * Runs a callback once a page fragment is confirmed loaded.
-     * If the page is already loaded, runs synchronously.
-     * If not yet loaded, polls every 50ms until it is.
-     */
     _whenLoaded(pageKey, callback) {
         const check = () => {
             if (window.app.router.isLoaded(pageKey)) callback();
-            else { setTimeout(check, 50); }
+            else setTimeout(check, 50);
         };
         check();
     }
