@@ -7,7 +7,7 @@
 // API URL
 // Local development:  'http://localhost:3000'
 // Production:         'https://your-app.onrender.com'
-const API = 'http://localhost:3000';
+const API = 'https://muscle-guessing-game.onrender.com';
 
 // DIFFICULTY CONFIG
 // guesses  — max number of guesses the player gets
