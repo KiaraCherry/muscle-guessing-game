@@ -14,8 +14,8 @@
 
     <div class="auth-card">
         <div class="auth-tabs">
-            <div class="auth-tab active" id="tabLogin" onclick="authTab('login')"></div>
-            <div class="auth-tab" id="tabReg" onclick="authTab('register')"></div>
+            <div class="auth-tab active" id="tabLogin" onclick="window.app.auth.switchTab('login')"></div>
+            <div class="auth-tab" id="tabReg" onclick="window.app.auth.switchTab('register')"></div>
         </div>
 
         <!-- Sign In -->
@@ -28,7 +28,7 @@
                 <label id="lblLoginPass"></label>
                 <input id="liPass" type="password" autocomplete="current-password">
             </div>
-            <button class="auth-btn" onclick="doLogin()">
+            <button class="auth-btn" onclick="window.app.auth.login()">
                 <span id="btnSignIn"></span>
             </button>
         </div>
@@ -47,7 +47,7 @@
                 <label id="lblRegPass"></label>
                 <input id="rPass" type="password" autocomplete="new-password">
             </div>
-            <button class="auth-btn" onclick="doRegister()">
+            <button class="auth-btn" onclick="window.app.auth.register()">
                 <span id="btnRegister"></span>
             </button>
         </div>
@@ -59,7 +59,7 @@
     <div class="guest-divider">
         <span id="guestDividerText"></span>
     </div>
-    <button class="guest-btn" id="btnGuest" onclick="continueAsGuest()"></button>
+    <button class="guest-btn" id="btnGuest" onclick="window.app.auth.continueAsGuest()"></button>
     <p class="guest-note" id="guestNote"></p>
 
 </div>
