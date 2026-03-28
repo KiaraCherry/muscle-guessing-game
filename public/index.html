@@ -16,7 +16,7 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -54,8 +54,7 @@
                 <div class="footer-brand">
                     <div class="footer-logo">MUSCLE<em>LE</em></div>
                     <p class="footer-tagline">An anatomy word game built for physiotherapy students. Test your muscle
-                        knowledge
-                        every day.</p>
+                        knowledge every day.</p>
                     <span class="footer-version">v0.1.0 beta</span>
                 </div>
 
@@ -63,10 +62,9 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Contact</div>
                     <div class="footer-links">
-                        <a class="footer-link" href="/cdn-cgi/l/email-protection#740d1b0106341119151d185a171b19">
+                        <a class="footer-link" href="mailto:your@email.com">
                             <span class="material-symbols-rounded">mail</span>
-                            <span class="__cf_email__"
-                                data-cfemail="bbc2d4cec9fbded6dad2d795d8d4d6">[email&#160;protected]</span>
+                            your@email.com
                         </a>
                         <a class="footer-link" href="https://github.com/yourusername" target="_blank" rel="noopener">
                             <span class="material-symbols-rounded">code</span>
@@ -146,7 +144,7 @@
     <!-- Result Overlays -->
     <div class="result-overlay" id="resultOverlay">
         <div class="result-card">
-            <div class="r-emoji" id="rEmoji">💪</div>
+            <div class="r-emoji" id="rEmoji"></div>
             <div class="r-heading" id="rHeading"></div>
             <div class="r-muscle" id="rMuscle"></div>
             <div class="r-fullname" id="rFullname"></div>
@@ -158,38 +156,14 @@
 
 
     <!-- ══════════════════════════════════════════════════════════════════
-     SCRIPTS
-     Order matters:
-       1. config.js   — API URL, difficulty config constants
-       2. en.js       — LANG strings + MUSCLES database
-       3. router.js   — page loading + showPage() + bootRouter()
-       4. auth.js     — login, register, guest, session
-       5. game.js     — gameplay logic
-       6. stats.js    — stats rendering
+     ABOUT MODAL
      ══════════════════════════════════════════════════════════════════ -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="lang/en/en.js"></script>
-    <script src="js/router.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/stats.js"></script>
-    <script src="js/app.js"></script>
-
-    <script>
-        // Boot: load page fragments, populate static strings, then attempt
-        // auto-login (defined in auth.js). tryAutoLogin calls showAuth() or
-        // enterApp() which each call showPage() via router.js.
-        bootRouter().then(() => tryAutoLogin());
-    </script>
-
-    <!-- About Modal -->
     <div class="modal-bg" id="aboutModal">
         <div class="diff-modal" style="max-width:480px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
                 <div class="diff-title">About Musclele</div>
                 <button onclick="closeModal('aboutModal')"
-                    style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted);">
+                    style="background:none;border:none;cursor:pointer;color:var(--muted);">
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -213,7 +187,7 @@
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
                 <div class="diff-title">Privacy Policy</div>
                 <button onclick="closeModal('privacyModal')"
-                    style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted);">
+                    style="background:none;border:none;cursor:pointer;color:var(--muted);">
                     <span class="material-symbols-rounded">close</span>
                 </button>
             </div>
@@ -222,20 +196,16 @@
                 <p
                     style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">
                     Last updated: 2025</p>
-
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">What we collect</p>
-                    <p>When you create an account, we store your display name, email address, and a securely hashed
-                        version
-                        of your password. We also store your game statistics — streaks, win rates, guess distributions,
-                        and
+                    <p>When you create an account we store your display name, email address, and a securely hashed
+                        password. We also store your game statistics — streaks, win rates, guess distributions, and
                         accuracy by muscle group.</p>
                 </div>
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">How we use it</p>
                     <p>Your data is used solely to power the app — saving your progress, displaying your stats, and
-                        showing
-                        the leaderboard. We do not sell, share, or use your data for advertising.</p>
+                        showing the leaderboard. We do not sell, share, or use your data for advertising.</p>
                 </div>
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Guest users</p>
@@ -244,28 +214,45 @@
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Data storage</p>
                     <p>Data is stored securely on MongoDB Atlas. Passwords are hashed using bcrypt and are never stored
-                        in
-                        plain text.</p>
+                        in plain text.</p>
                 </div>
                 <div>
                     <p style="font-weight:700;color:var(--navy);margin-bottom:4px;">Contact</p>
-                    <p>For any privacy-related questions, contact us at <a
-                            href="/cdn-cgi/l/email-protection#b3cadcc6c1f3d6ded2dadf9dd0dcde"
-                            style="color:var(--teal);"><span class="__cf_email__"
-                                data-cfemail="fd8492888fbd98909c9491d39e9290">[email&#160;protected]</span></a>.</p>
+                    <p>For any privacy questions, contact us at <a href="mailto:your@email.com"
+                            style="color:var(--teal);">your@email.com</a>.</p>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+     SCRIPTS — order matters
+        1. config.js   — API URL, difficulty config constants
+        2. en.js       — LANG strings + MUSCLES database
+        3. router.js   — page loading + showPage() + bootRouter()
+        4. auth.js     — login, register, guest, session
+        5. game.js     — gameplay logic
+        6. stats.js    — stats rendering
+     ══════════════════════════════════════════════════════════════════ -->
+    <script src="js/config.js"></script>
+    <script src="lang/en/en.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/app.js"></script>
 
     <script>
         function showAboutModal() { document.getElementById('aboutModal').classList.add('open'); }
         function showPrivacyModal() { document.getElementById('privacyModal').classList.add('open'); }
         function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
-        // Close on backdrop click
-        document.querySelectorAll('#aboutModal, #privacyModal').forEach(m => {
-            m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
+        // Close modals on backdrop click
+        ['aboutModal', 'privacyModal'].forEach(id => {
+            document.getElementById(id).addEventListener('click', e => {
+                if (e.target === document.getElementById(id)) closeModal(id);
+            });
         });
     </script>
 
