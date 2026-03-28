@@ -7,12 +7,13 @@
  */
 
 class Router {
+
     constructor() {
         this._pages = {
-            auth: { containerId: 'authScreen', file: 'pages/auth.html', loaded: false, onLoad: _initAuthStrings },
-            home: { containerId: 'homePage', file: 'pages/home.html', loaded: false, onLoad: _initHomeStrings },
-            game: { containerId: 'gamePage', file: 'pages/game.html', loaded: false, onLoad: _initGameStrings },
-            stats: { containerId: 'statsPage', file: 'pages/stats.html', loaded: false, onLoad: _initStatsStrings },
+            auth: { containerId: 'authScreen', file: 'pages/auth.html', loaded: false, onLoad: () => this._initAuthStrings() },
+            home: { containerId: 'homePage', file: 'pages/home.html', loaded: false, onLoad: () => this._initHomeStrings() },
+            game: { containerId: 'gamePage', file: 'pages/game.html', loaded: false, onLoad: () => this._initGameStrings() },
+            stats: { containerId: 'statsPage', file: 'pages/stats.html', loaded: false, onLoad: () => this._initStatsStrings() },
         };
     }
 
@@ -21,24 +22,22 @@ class Router {
     /** Load a page fragment by key (cached after first load) */
     async loadPage(key) {
         const page = this._pages[key];
-        if (!page) return console.error(`[router] Unknown page: "${key}"`);
+        if (!page) return console.error(`[Router] Unknown page: "${key}"`);
         if (page.loaded) return;
 
         try {
             const res = await fetch(page.file);
             if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-            const html = await res.text();
-            document.getElementById(page.containerId).innerHTML = html;
+            document.getElementById(page.containerId).innerHTML = await res.text();
             page.onLoad();
             page.loaded = true;
         } catch (err) {
-            console.error(`[router] Failed to load ${page.file}:`, err);
+            console.error(`[Router] Failed to load ${page.file}:`, err);
         }
     }
 
-    /** Navigate to a page, loading its fragments if required */
+    /** Navigate to a page, loading its fragment if needed. */
     async showPage(key) {
-        // Ensure the fragment is loaded first
         await this.loadPage(key);
 
         // Hide all app pages, deactivate nav buttons
@@ -49,7 +48,7 @@ class Router {
         if (key === 'home') document.getElementById('nbHome').classList.add('active');
         if (key === 'stats') {
             document.getElementById('nbStats').classList.add('active');
-            window.app.stats.load()  // defined in stats.js
+            window.app.stats.load();
         }
     }
 
@@ -60,18 +59,17 @@ class Router {
         document.getElementById('app').style.display = 'none';
     }
 
-    /** Returns true once a page fragment has been injected into the DOM. */
-    isPageLoaded(key) {
+    /** Returns true once a page fragment has been injected. */
+    isLoaded(key) {
         return this._pages[key]?.loaded ?? false;
     }
 
     /** Boot: init static strings, load auth (blocking), prefetch home. */
-    async bootRouter() {
+    async boot() {
         this._initTopbarStrings();
         this._initModalStrings();
-
-        await this.loadPage('auth');          // blocking — needed before tryAutoLogin
-        this.loadPage('home');                // non-blocking background prefetch
+        await this.loadPage('auth');
+        this.loadPage('home');       // background prefetch
     }
 
     // STRING POPULATION CALLBACKS
@@ -131,8 +129,8 @@ class Router {
         $('distSectionTitle').textContent = LANG.stats.distTitle;
         $('groupSectionTitle').textContent = LANG.stats.groupTitle;
         $('lbSectionTitle').textContent = LANG.stats.lbTitle;
-        $('lbHeader').innerHTML =
-            LANG.stats.lbHeaders.map(h => `<div class="lb-cell">${h}</div>`).join('');
+        $('lbHeader').innerHTML = LANG.stats.lbHeaders
+            .map(h => `<div class="lb-cell">${h}</div>`).join('');
     }
 
     _initTopbarStrings() {
