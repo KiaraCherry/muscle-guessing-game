@@ -766,10 +766,7 @@ const MUSCLES = [
         fact: 'The musculocutaneous nerve <strong>physically pierces through coracobrachialis</strong> — it is the only muscle the musculocutaneous nerve passes through rather than simply alongside. Entrapment within the muscle can cause anterior arm sensory loss.',
     },
 
-    // ══════════════════════════════════════════════════════════════════
     // ELBOW
-    // ══════════════════════════════════════════════════════════════════
-
     {
         name: 'BICEPS', displayName: 'Biceps Brachii',
         group: 'Upper Limb', region: 'Upper Arm', type: 'Biarticular',
