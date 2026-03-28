@@ -5,6 +5,7 @@
  */
 
 class Stats {
+
     async load() {
         const auth = window.app.auth;
         // Guest: show a prompt instead of stats
@@ -14,7 +15,7 @@ class Stats {
             document.getElementById('guestStatsMsgHead').textContent = LANG.stats.guestHeading;
             document.getElementById('guestStatsMsgSub').textContent = LANG.stats.guestSubtext;
             document.getElementById('guestStatsMsgBtn').textContent = LANG.stats.guestBtn;
-            document.getElementById('guestStatsMsgBtn').onclick = () => auth.signOut(); // back to auth
+            document.getElementById('guestStatsMsgBtn').onclick = () => auth.signOut();
             return;
         }
 
@@ -24,7 +25,7 @@ class Stats {
         // Refresh user data
         try {
             const data = await auth.get('/api/me');
-            if (data.user) currentUser = data.user;
+            if (data.user) auth.currentUser = data.user;
         } catch { /* use cached */ }
 
         this._renderHeadlineStats();
