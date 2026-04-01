@@ -113,7 +113,7 @@ npm install
 Create a `.env` file in the project root:
 
 ```env
-MONGO_URI=mongodb+srv://musclele-app:yourpassword@cluster0.xxxxx.mongodb.net/musclele?retryWrites=true&w=majority
+MONGO_URI=mongodb_URI
 JWT_SECRET=your_long_random_secret_here
 PORT=3000
 ```
