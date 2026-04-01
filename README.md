@@ -104,7 +104,7 @@ npm install
 ### 3. Set up MongoDB Atlas
 
 1. Go to [cloud.mongodb.com](https://cloud.mongodb.com) → **Build a Database** → **M0 Free**
-2. Create a database user (e.g. `musclele-app`) with a strong password
+2. Create a database user with a strong password
 3. Under **Network Access** → **Add IP Address** → **Allow Access from Anywhere** (`0.0.0.0/0`)
 4. Click **Connect** → **Drivers** → copy the connection string
 
@@ -131,20 +131,6 @@ npm run dev        # development mode (auto-restart on file changes)
 ```
 
 Open [http://localhost:3000](http://localhost:3000) —> you should see `MongoDB connected` in the terminal.
-
----
-
-## Deploying to Render (free)
-
-1. Push your repo to GitHub (make sure `.env` is in `.gitignore`)
-2. Go to [render.com](https://render.com) → **New** → **Web Service**
-3. Connect your GitHub repository
-4. Configure:
-   - **Build Command:** `npm install`
-   - **Start Command:** `node server.js`
-5. Add Environment Variables: `MONGO_URI`, `JWT_SECRET`, `PORT=10000`
-6. Deploy — you'll get a URL like `https://musclele.onrender.com`
-7. Update `public/js/config.js` → change `API` to your Render URL
 
 ---
 
